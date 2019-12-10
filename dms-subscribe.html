@@ -1,0 +1,68 @@
+<script type="text/javascript">
+    RED.nodes.registerType('dms-subscribe', {
+        category: 'ProMoS NT',
+        color: '#a6bbcf',
+        defaults: {
+            name :  { value : 'DMS-Subscribe' },
+            server: {value:"", type:"dms-server"},
+            subscribedEvent: {value:"onChange"},
+            payload : { value : '["System"]', validate: RED.validators.typedInput("settingsType"), }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "arrow-in.png",
+        label: function () {
+            return this.name || "DMS-Subscribe"
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic":"";
+        },
+        oneditprepare: function () {
+            $("#node-input-payload").typedInput({
+                default: 'json',
+                typeField: $("#node-input-settingsType"),
+                types: ['str', 'json']
+            });
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="dms-subscribe">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-server"><i class="icon-bookmark"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+    <div class="form-row">
+            <label for="node-input-subscribedEvent"><i class="icon-bookmark"></i> Event</label>
+            <input type="text" id="node-input-subscribedEvent">
+        </div>
+    <div class="form-row">
+        <label for="node-input-payload"><i class="icon-bookmark"></i> Payload</label>
+        <input type="text" id="node-input-payload">
+        <input type="hidden" id="node-input-settingsType">
+    </div>
+</script>
+
+
+
+<script type="text/x-red" data-help-name="dms-subscribe">
+    <p>Make a DMS-Subscription.</p>
+
+    <h3>Event</h3>
+        <p>Subscribe a specific event like "onChange", "onSet", "onCreate", "onRename", "onDelete" or "*".</p>
+    <h3>Payload </h3>
+    <p>String</p>
+        Subscribe single keys.
+        <pre><code>
+               AKS-Path
+        </code></pre>
+    <p>JSON</p>
+        Subscribe multiple keys.
+        <pre><code>
+               ["AKS-Path1", "AKS-Path2"]
+        </code></pre>
+    </script>

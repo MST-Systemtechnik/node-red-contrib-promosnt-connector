@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('dms-server',{
+        category: 'config',
+        defaults: {
+            host: {value:"localhost",required:true},
+            port: {value:9020,required:true,validate:RED.validators.number()},
+            path: {value:"/json_data",required:true},
+        },
+        label: function() {
+            return this.host+":"+this.port + this.path;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="dms-server">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="icon-bookmark"></i> Host</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-port"><i class="icon-bookmark"></i> Port</label>
+        <input type="text" id="node-config-input-port">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-path"><i class="icon-bookmark"></i> Path</label>
+        <input type="text" id="node-config-input-path">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="dms-handler">
+    <p>Server instance</p>
+
+    
+    <h3>Details</h3>
+    Enable the ip-address of the node-red-server in following file. <pre>C:\PromosNT\proj\[PROJECT]\cfg\DMS_JSON_IPS.cfg</pre>
+    If it runs on the same ip, use <pre>localhost</pre>.
+    
+    </script>

@@ -1,0 +1,82 @@
+<script type="text/javascript">
+    RED.nodes.registerType('dms-handler', {
+        category: 'ProMoS NT',
+        color: '#a6bbcf',
+        defaults: {
+            name :  { value : '' },
+            server: {value:"", type:"dms-server"},
+            payload : { value : '{"whois":"MyServiceName","user":"","set":[],"get":[],"subscribe":[{"path":"System","event":"onChange","query":{"maxDepth":0}}]}', validate: RED.validators.typedInput("settingsType") }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "bridge.png",
+        label: function () {
+            return this.name || "DMS-Handler"
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        oneditprepare: function () {
+            $("#node-input-payload").typedInput({
+                default: 'json',
+                typeField: $("#node-input-payload-settingsType"),
+                types: ['json']
+            });
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="dms-handler">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-server"><i class="icon-bookmark"></i> Server</label>
+        <input type="text" id="node-input-server">
+    </div>
+    <div class="form-row">
+        <label for="node-input-payload"><i class="icon-bookmark"></i> Payload</label>
+        <input type="text" id="node-input-payload">
+        <input type="hidden" id="node-input-payload-settingsType">
+    </div>
+</script>
+
+
+<script type="text/x-red" data-help-name="dms-handler">
+    <p>Make a DMS-Request.</p>
+
+    Use the schema below to make a request to the ProMoS NT JSON-Exchange service. You can get, set, delete, subscribe or unsubscribe any data from the DMS.
+    Check the API-Documentation for more infromations.
+    
+    <h3>Details</h3>
+        <pre><code>
+                {
+                    "whois":"MyServiceName",
+                    "user":"",
+                    "set": [
+                        {
+                            "path":"EXMPL1:T11:MN:003:Vis:VMC_power",
+                            "value":4.4444
+                        }
+                    ],
+                    "get": [
+                        {"path":"EXMPL1:T11:MN:003:Vis:VMC_energy1"},
+                        {"path":"EXMPL1:T11:MN:003:Vis:VEnergy1V"},
+                        {"path":"EXMPL1:T11:MN:003:Vis:VMC_power"}
+                    ],
+                    "subscribe": [
+                        {
+                            "path":"System",
+                            "event":"onChange",
+                            "query": {
+                                "maxDepth": 0
+                            }
+                        }
+                    ]
+                }
+
+
+        </code></pre>
+    
+    </script>

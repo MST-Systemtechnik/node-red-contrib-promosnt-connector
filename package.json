@@ -1,0 +1,40 @@
+{
+  "name": "node-red-contrib-promosnt-connector",
+  "node-red": {
+    "nodes": {
+      "dms-server": "dms-server.js",
+      "dms-handler": "dms-handler.js",
+      "dms-subscribe": "dms-subscribe.js",
+      "dms-value": "dms-value.js",
+      "dms-write": "dms-write.js"
+    }
+  },
+  "version": "1.0.0",
+  "description": "A node-red library for the ProMoS NT Scada.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MST-Systemtechnik/node-red-contrib-promosnt-connector.git"
+  },
+  "keywords": [
+    "node-red",
+    "cloud",
+    "api",
+    "iot",
+    "mst",
+    "promos",
+    "scada",
+    "promosnt"
+  ],
+  "author": "MST-Systemtechnik, https://github.com/MST-Systemtechnik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MST-Systemtechnik/node-red-contrib-promosnt-connector/issues"
+  },
+  "homepage": "https://github.com/MST-Systemtechnik/node-red-contrib-promosnt-connector#readme",
+  "dependencies": {
+    "ws": "^7.1.0"
+  }
+}

@@ -1,0 +1,103 @@
+<script type="text/javascript">
+    RED.nodes.registerType('dms-value', {
+        category: 'ProMoS NT',
+        color: '#a6bbcf',
+        defaults: {
+            action :  { value : 'subscribe, event' },
+            key :  { value : 'value' },
+            path :  { value : '', required : true },
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "function.png",
+        label: function () {
+            return this.path + " [" + this.key + "]" || "DMS-Value"
+        },
+        labelStyle: function() {
+            return this.path?"node_label_italic":"";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="dms-value">
+    <div class="form-row">
+        <label for="node-input-action"><i class="icon-bookmark"></i> Actions</label>
+        <input type="text" id="node-input-action">
+    </div>
+    <div class="form-row">
+        <label for="node-input-key"><i class="icon-bookmark"></i> Key</label>
+        <input type="text" id="node-input-key">
+    </div>
+    <div class="form-row">
+        <label for="node-input-path"><i class="icon-bookmark"></i> Path / AKS</label>
+        <input type="text" id="node-input-path">
+    </div>
+</script>
+
+
+
+<script type="text/x-red" data-help-name="dms-value">
+    <p>Parse a DMS-Response.</p>
+    
+    This nodes parses a value by given actions like "get, event,..." and a given key. When key is empty, it will send the whole parsed object.
+
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt class="optional">payload <span class="property-type">string</span></dt>
+            <dd> The payload from the dms-response</dd>
+        </dl>
+    
+     <h3>Outputs</h3>
+        <li>Standard output
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>the parsed value from response.</dd>
+            </dl>
+        </li>
+
+    
+    <h3>Details</h3>
+        <pre><code>
+                {
+                        "get": [
+                            {
+                                "path":"EXMPL1:T11:MN:003:Vis:VMC_power",
+                                "code":"ok",
+                                "type":"double",
+                                "value":4.4444,
+                                "stamp":"2015-03-20T07:49:19,000+01:00"
+                            }
+                        ],
+                        "set": [
+                            {
+                                "path":"EXMPL1:T11:MN:003:Vis:VMC_power",
+                                "code":"ok",
+                                "type":"double",
+                                "value":4.4444,
+                                "stamp":"2015-03-20T07:49:19,000+01:00"
+                            }
+                        ],
+                        "event": [
+                            {
+                                "code":"onChange",
+                                "path":"System:Blinker:Blink0.25",
+                                "trigger":"<SYS>",
+                                "type":"bool",
+                                "value":true,
+                                "stamp":"2015-05-27T08:13:58,521+02:00"
+                            },
+                            {
+                                "code":"onChange",
+                                "path":"System:Blinker:Blink0.5",
+                                "trigger":"<SYS>",
+                                "type":"bool",
+                                "value":false,
+                                "stamp":"2015-05-27T08:13:58,521+02:00"
+                            }
+                        ]
+                }
+
+
+        </code></pre>
+    
+    </script>
