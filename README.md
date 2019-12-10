@@ -23,7 +23,7 @@ This node allows Node-RED developers to quickly build a connection to the [ProMo
 ### Nodes
 
 - DMS-Handler
-- DMS-Suscribe
+- DMS-Subscribe
 - DMS-Write
 - DMS-Value
 
