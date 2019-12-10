@@ -31,7 +31,7 @@ This node allows Node-RED developers to quickly build a connection to the [ProMo
 
 Full controll of the JSON-Exchange API.
 
-#### DMS-Suscribe
+#### DMS-Subscribe
 
 Subscribe variables to get the actual data.
 
