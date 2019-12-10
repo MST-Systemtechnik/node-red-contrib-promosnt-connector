@@ -2,7 +2,7 @@
 
 > NODE-RED ProMoS NT library by MST-Systemtechnik AG.
 
-[Logo](images/ProMoS-logo_280_0.png)
+![Logo](images/ProMoS-logo_280_0.png)
 
 ## Overview
 
