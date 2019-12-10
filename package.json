@@ -9,7 +9,7 @@
       "dms-write": "dms-write.js"
     }
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A node-red library for the ProMoS NT Scada.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
